@@ -19,6 +19,8 @@ $filePath = Resolve-Path ".\lss\LockScreenSet-main"
 $imgPath = "$filePath\Treeline Lockscreen.png"
 Write-Host $imgPath
 
+#got some false negatives.  The lock screen may have been changed if custom settings or pre-defined user was not present.
+#possibly add to a group to be applied with admin_treeline and not after user is logged in?
 Set-ItemProperty -Path $regKey -Name LockScreenImage -Value $imgPath
 Set-ItemProperty -Path $regKey -Name LockScreenImageStatus -Value 1 -Type DWORD 
 Set-ItemProperty -Path $regKey -Name LockScreenImagePath -Value $imgPath
